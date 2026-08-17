@@ -1,0 +1,266 @@
+/*
+  InsightGuard AI â€” clean product theme
+  Visual direction: bright SaaS surfaces, cobalt accents, compact data UI,
+  soft depth and realistic transport/fleet operations styling.
+*/
+
+:root{
+  --ig-ink:#102041;
+  --ig-canvas:#f6f8fc;
+  --ig-surface:#ffffff;
+  --ig-line:#e4eaf3;
+  --ig-blue:#1769ff;
+  --ig-blue-dark:#0f52dc;
+  --ig-blue-soft:#edf4ff;
+  --ig-cyan:#32b8f4;
+  --ig-mint:#1769ff;
+  --ig-mint-dark:#0f52dc;
+  --ig-mint-soft:#edf4ff;
+  --ig-display:'Manrope','Inter',sans-serif;
+  --ig-body:'Inter',sans-serif;
+  --ig-shadow:0 24px 70px rgba(31,55,95,.14);
+}
+
+body{font-family:var(--ig-body);background:var(--ig-canvas);color:#172036}
+
+/* Marketing site */
+.marketingSite{background:#fff;color:#172036}
+.siteHeader{
+  height:78px;
+  padding:0 max(5vw,34px);
+  position:absolute;
+  background:rgba(255,255,255,.84);
+  border-bottom:1px solid rgba(220,228,240,.9);
+  box-shadow:0 4px 20px rgba(25,53,93,.035);
+  backdrop-filter:blur(18px)
+}
+.siteBrand{color:#0b2148}
+.siteBrand em{color:var(--ig-cyan);font-size:12px}
+.siteBrandMark{
+  background:linear-gradient(145deg,#0a2d66,#071b3d);
+  box-shadow:0 10px 24px rgba(21,70,145,.2)
+}
+.siteBrandMark path:first-child{fill:#0b2f6a}
+.siteBrandMark .brandTick{stroke:#44d6ff}
+.siteNav{color:#536078;font-weight:600}
+.siteNav a:hover{color:var(--ig-blue)}
+.siteLogin,.mobileNavToggle{color:#25324a}
+.siteCta{
+  color:#fff;
+  background:linear-gradient(135deg,var(--ig-blue),#4a89ff);
+  border-radius:10px;
+  box-shadow:0 10px 24px rgba(23,105,255,.2)
+}
+
+.heroSection{
+  min-height:880px;
+  grid-template-columns:minmax(420px,.82fr) minmax(610px,1.28fr);
+  gap:42px;
+  padding:135px max(5vw,34px) 82px;
+  background:
+    radial-gradient(circle at 16% 22%,rgba(64,139,255,.10),transparent 27%),
+    radial-gradient(circle at 90% 10%,rgba(44,196,244,.09),transparent 24%),
+    linear-gradient(180deg,#fff 0%,#fbfcff 100%)
+}
+.heroAmbientOne{background:radial-gradient(circle,rgba(23,105,255,.11),transparent 67%)}
+.heroAmbientTwo{background:radial-gradient(circle,rgba(50,184,244,.11),transparent 68%)}
+.heroEyebrow,.sectionKicker{color:#60708a}
+.heroEyebrow span{height:2px;background:var(--ig-blue)}
+.heroCopy{max-width:640px}
+.heroCopy h1{
+  max-width:620px;
+  color:#101d36;
+  font-size:clamp(48px,4.6vw,72px);
+  line-height:1.06;
+  letter-spacing:-3.8px;
+  margin:24px 0 23px
+}
+.heroCopy h1 em{
+  color:var(--ig-blue);
+  background:linear-gradient(135deg,#1769ff,#24a9ef);
+  background-clip:text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent
+}
+.heroCopy>p{color:#5c687c;font-size:17px;line-height:1.7;max-width:600px}
+.heroPrimary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--ig-blue),#4a89ff);
+  box-shadow:0 14px 30px rgba(23,105,255,.22)
+}
+.heroSecondary{background:#fff;color:#172036;border:1px solid #dce4f0;box-shadow:0 8px 22px rgba(34,58,94,.06)}
+.playDot{background:var(--ig-blue-soft);color:var(--ig-blue)}
+.heroTrust{border-top:1px solid #e5eaf2}
+.heroTrust>span{color:#8290a5}
+.heroTrust b{color:#425069;font-weight:650}
+.heroTrust b:before{color:var(--ig-blue)}
+
+.heroOrbit{border-color:rgba(23,105,255,.10)}
+.productWindow{
+  width:min(830px,55vw);
+  min-width:655px;
+  background:#f6f8fc;
+  border:1px solid rgba(205,216,231,.95);
+  border-radius:18px;
+  box-shadow:0 38px 105px rgba(38,62,99,.22),0 3px 10px rgba(38,62,99,.08);
+  transform:perspective(1800px) rotateY(-4deg) rotateX(1deg)
+}
+.productChrome{height:40px;background:#fff;color:#647087;border-bottom:1px solid #e3e8f0}
+.chromeDots i:nth-child(1){background:#ff655b}.chromeDots i:nth-child(2){background:#ffbd2e}.chromeDots i:nth-child(3){background:#28c941}
+.chromeSecure{color:#647087}.chromeSecure:first-letter{color:#17a66a}
+.productBody{background:#f7f9fc}
+.miniSide{background:#fff;border-right:1px solid #e3e8f0}
+.miniShield{background:linear-gradient(145deg,#0a2d66,#071b3d);color:#48d5ff}
+.miniSide i{background:#e7ecf4}.miniSide i.active{background:var(--ig-blue);box-shadow:0 6px 12px rgba(23,105,255,.25)}
+.miniTop strong{color:#121e34}.miniTop button{background:var(--ig-blue)}
+.miniKpi{border:1px solid #e4e9f1;box-shadow:0 7px 20px rgba(45,67,99,.04)}
+.miniKpi.dark{background:#fff;color:#111d33}
+.miniKpi.dark span{color:#7d8e92}
+.miniKpi strong{font-size:20px;color:#111d33}
+.miniKpi small{color:#16a66a}
+.miniChartCard,.miniAiCard{border:1px solid #e4e9f1;box-shadow:0 7px 20px rgba(45,67,99,.04)}
+.heroLine{stroke:var(--ig-blue)}
+.miniAiCard{background:linear-gradient(145deg,#eaf3ff,#effcff);color:#14223b;border-color:#d8e8ff}
+.miniSpark{background:var(--ig-blue);color:#fff}
+.miniAiCard small,.miniAiCard button{color:var(--ig-blue)}
+.miniAiCard strong{color:#14223b}.miniAiCard p{color:#61708a}
+.heroFloat{border:1px solid #e2e8f1;box-shadow:0 18px 50px rgba(36,61,101,.17)}
+.heroFloat>span{background:var(--ig-blue-soft);color:var(--ig-blue)}
+
+.proofBar{background:#fff;border-color:#e4eaf2;box-shadow:0 -1px 0 #e8edf4,0 18px 40px rgba(37,59,94,.035)}
+.proofBar div,.proofBar div:first-child{border-color:#e7ecf3}
+.proofBar strong{color:#14213a}.proofBar span{color:#758198}
+.platformSection,.governanceSection{background:#f7f9fc}
+.sectionIntro .sectionKicker{color:#1769ff}.sectionIntro h2{color:#14213a}.sectionIntro p{color:#667389}
+.platformCard{border-color:#e3e9f2;box-shadow:0 14px 36px rgba(36,60,96,.055)}
+.platformCardLarge{background:linear-gradient(145deg,#0e5ae7,#2d86ff);border-color:#1769ff}
+.platformIcon{background:var(--ig-blue-soft);color:var(--ig-blue)}
+.platformCardLarge .platformIcon{background:rgba(255,255,255,.17);color:#fff}
+.platformCardLarge p{color:#dce9ff}.platformCardLarge .platformNumber{color:#a9c8ff}
+.featureBars i{background:linear-gradient(#fff,rgba(255,255,255,.18))}
+.workflowRail article>span{background:var(--ig-blue);color:#fff;box-shadow:0 8px 20px rgba(23,105,255,.18)}
+.workflowRail>i{background:#cbdaf3}
+.governancePanel{background:linear-gradient(135deg,#0b2c67,#1769ff);box-shadow:0 28px 70px rgba(20,73,164,.2)}
+.sectionKicker.light{color:#b9d3ff}.governanceCopy>p,.governanceCopy li{color:#d6e5ff}
+.governanceCopy li:before{color:#73e6ff}
+.govRing{border-color:rgba(255,255,255,.18);color:#c1d8ff}
+.govCore{background:#fff;box-shadow:0 0 70px rgba(84,211,255,.34)}
+.govCore path:first-child{fill:#0d4eb9}.govCore .brandTick{stroke:#52d8ff}
+.billingToggle{background:#f0f4fa}.billingToggle span{color:var(--ig-blue)}
+.homePriceCard{border-color:#e2e8f1;box-shadow:0 12px 34px rgba(37,60,96,.05)}
+.homePriceCard.featured{background:linear-gradient(145deg,#0d4fbd,#1769ff);border-color:#1769ff;box-shadow:0 26px 60px rgba(23,105,255,.24)}
+.mostPopular{background:#fff;color:var(--ig-blue)}
+.homePriceCard.featured>p{color:#dbe8ff}
+.homePriceCard li:before{color:var(--ig-blue)}
+.homePriceCard.featured li:before{color:#7ee9ff}
+.homePriceCard.featured button{background:#fff;border-color:#fff;color:var(--ig-blue)}
+.closingCta{background:linear-gradient(135deg,#0b2c67,#1769ff);box-shadow:0 26px 65px rgba(19,70,160,.2)}
+.closingCta p{color:#d5e4ff}
+.siteFooter{background:#0b1730}
+
+/* Application shell â€” mirrors the supplied product board */
+.applicationShell{background:#f6f8fc}
+.applicationShell .layout{grid-template-columns:244px 1fr}
+.applicationShell .sidebar{
+  width:auto;
+  background:#fff;
+  color:#172036;
+  border-right:1px solid #e2e8f1;
+  padding:20px 15px;
+  gap:16px;
+  box-shadow:4px 0 18px rgba(39,60,91,.025)
+}
+.applicationShell .brand{color:#0b2148}
+.applicationShell .brand b{color:#25b7ee}
+.applicationShell .shield{background:linear-gradient(145deg,#0a2d66,#071b3d);color:#48d5ff;box-shadow:0 8px 18px rgba(20,63,127,.16)}
+.workspaceStatus{background:#f8faff;border:1px solid #e2e8f1;color:#172036}
+.workspaceLogo{background:#e8f1ff;color:var(--ig-blue)}
+.workspaceStatus small{color:#8390a4}.workspaceStatus button{color:#728096}
+.navGroup{color:#97a2b4}
+.applicationShell .navBtn{color:#465268;padding:9px 12px;font-size:12px}
+.applicationShell .navBtn span{color:#69758a}
+.applicationShell .navBtn:hover{background:#f5f8fd;color:#172036}
+.applicationShell .navBtn.active{background:#edf4ff;color:var(--ig-blue);box-shadow:inset 3px 0 0 var(--ig-blue)}
+.applicationShell .navBtn.active span{color:var(--ig-blue)}
+.applicationShell .copilot{background:linear-gradient(145deg,#f7faff,#eef6ff);border-color:#dbe7f8;color:#172036}
+.applicationShell .copilot p{color:#69778d}.applicationShell .copilot .sparkle{color:var(--ig-blue)}
+.applicationShell .softBtn{background:#eaf3ff;border-color:#d5e6ff;color:var(--ig-blue)}
+.backToSite{border-top:1px solid #e5eaf2;color:#78859a}
+.applicationShell .topbar{background:rgba(255,255,255,.92);border-bottom:1px solid #e2e8f1;box-shadow:0 4px 16px rgba(38,60,95,.025)}
+.applicationShell .pageCrumb{color:#14213a}
+.appSearch{border-color:#e1e7ef;background:#fbfcfe}
+.applicationShell .profile{background:#fff;border:1px solid #e3e8f0}
+.applicationShell .page{padding:28px 30px 46px}
+.applicationShell .pageHeader h1{color:#121d33}
+.applicationShell .card,.applicationShell .metric{border-color:#e1e7ef;box-shadow:0 8px 24px rgba(34,58,94,.045)}
+.applicationShell .metric:hover,.applicationShell .card:hover{box-shadow:0 14px 32px rgba(34,58,94,.075)}
+.applicationShell .primaryBtn{background:var(--ig-blue);border-color:var(--ig-blue);box-shadow:0 10px 22px rgba(23,105,255,.18)}
+.applicationShell .plainBtn{border-color:#dfe6ef}
+.applicationShell .metric:after{background:#edf4ff;color:var(--ig-blue)}
+.applicationShell .metric.green:after{background:#eaf9f1;color:#16a66a}
+.applicationShell .metric.purple:after{background:#f2edff;color:#7c3aed}
+.applicationShell .metric.orange:after{background:#fff5df;color:#f59e0b}
+.applicationShell .line{stroke:var(--ig-blue)}
+.applicationShell .area{fill:rgba(23,105,255,.13)}
+.applicationShell .dot{stroke:var(--ig-blue)}
+.applicationShell .bar{fill:#377dff}
+.applicationShell .aiPanel{background:linear-gradient(145deg,#eaf3ff,#effcff);border-color:#d6e6ff}
+.applicationShell .badge{background:#edf4ff;color:var(--ig-blue)}
+.applicationShell .badge.green{background:#eaf9f1;color:#16a66a}
+.applicationShell .badge.orange{background:#fff5df;color:#b46900}
+.applicationShell .badge.purple{background:#f2edff;color:#7c3aed}
+.applicationShell .uploadZone{background:linear-gradient(180deg,#fff,#f6f9ff);border-color:#bcd4ff}
+.applicationShell .message.user{background:var(--ig-blue)}
+.applicationShell .message.ai{background:#eef4ff}
+.applicationShell .plan.featured{border-color:var(--ig-blue);box-shadow:0 18px 34px rgba(23,105,255,.12)}
+.subscriptionBanner{background:#edf4ff;border-color:#d6e6ff}.subscriptionBanner>div>span{background:var(--ig-blue);color:#fff}.subscriptionBanner button{border-color:#ccdefa;color:var(--ig-blue)}
+
+/* Checkout and modal surfaces */
+.checkoutView{background:#f5f8fc;color:#172036}
+.checkoutHeader{background:#fff;color:#172036;border-bottom:1px solid #e1e7ef;box-shadow:0 5px 22px rgba(34,58,94,.04)}
+.checkoutHeader>button,.secureCheckout{color:#647187}
+.checkoutIntro>span,.summaryPlan button,.sandboxHint button{color:var(--ig-blue)}
+.checkoutCard,.summaryCard{border-color:#e1e7ef;box-shadow:0 12px 34px rgba(34,58,94,.055)}
+.checkoutStep>span{background:var(--ig-blue);color:#fff}
+.checkoutFields input:focus,.checkoutFields select:focus,.couponRow input:focus{border-color:var(--ig-blue);box-shadow:0 0 0 3px rgba(23,105,255,.11)}
+.paymentTabs{background:#f0f4fa}.sandboxHint{background:#edf4ff;border-color:#d6e6ff}.sandboxHint span{color:#5f7598}
+.checkoutConsent input{accent-color:var(--ig-blue)}
+.checkoutSubmit{background:var(--ig-blue);box-shadow:0 12px 25px rgba(23,105,255,.2)}
+.summaryTrust>div>span{color:var(--ig-blue)}
+.paymentSuccess{background:radial-gradient(circle at top,#397eff,#0b2c67 62%)}
+.successIcon{background:#edf4ff;color:var(--ig-blue)}
+.successKicker{color:var(--ig-blue)}
+.successActions button.primary{background:var(--ig-blue);border-color:var(--ig-blue)}
+.modalOverlay{background:rgba(11,23,48,.58)}
+.modalLogo{background:linear-gradient(145deg,#0a2d66,#071b3d);color:#48d5ff}
+.modalKicker{color:var(--ig-blue)}
+.authModal input:focus,.authModal select:focus,.authModal textarea:focus{border-color:var(--ig-blue);box-shadow:0 0 0 3px rgba(23,105,255,.11)}
+.authModal form button,.genericModal .modalActions button.primary{background:var(--ig-blue);border-color:var(--ig-blue)}
+.planChoice:hover{border-color:var(--ig-blue);background:#f5f9ff}
+.notificationList>div>span{background:#edf4ff;color:var(--ig-blue)}
+
+@media(max-width:1200px){
+  .heroSection{grid-template-columns:1fr;padding-top:132px}
+  .heroCopy{max-width:800px}
+  .productWindow{width:84vw}
+  .applicationShell .layout{grid-template-columns:232px 1fr}
+}
+
+@media(max-width:900px){
+  .siteNav{background:#fff;border:1px solid #dfe6ef;box-shadow:0 20px 50px rgba(32,55,90,.16)}
+  .siteNav a{color:#3b4860}
+  .applicationShell .sidebar{width:250px;box-shadow:16px 0 40px rgba(25,47,82,.16)}
+  .applicationShell .mobileTop{background:transparent}
+}
+
+@media(max-width:650px){
+  .heroSection{padding-top:115px;background:linear-gradient(180deg,#fff,#f7faff)}
+  .heroCopy h1{font-size:43px;line-height:1.08;letter-spacing:-2.5px}
+  .heroProduct{transform:scale(.69);margin:-40px -150px}
+  .proofBar{background:#fff}
+  .proofBar div{border-bottom-color:#e5eaf2}
+  .governancePanel{border-radius:22px}
+  .applicationShell .page{padding:20px 13px 38px}
+  .applicationShell .topbar{background:#fff}
+}
+

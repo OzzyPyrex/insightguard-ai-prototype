@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="InsightGuard AI turns operational data into explainable performance insights, data-quality controls and audit-ready governance." />
+  <meta name="theme-color" content="#071a23" />
+  <title>InsightGuard AI | Operational Intelligence You Can Defend</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20260619" />
+  <link rel="stylesheet" href="premium.css?v=20260619" />
+  <link rel="stylesheet" href="reference-theme.css?v=20260619" />
+  <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script defer src="app.js?v=20260619"></script>
+  <script defer src="payment-config.js?v=20260619"></script>
+  <script defer src="enhancements.js?v=20260619"></script>
+</head>
+<body>
+  <div class="toast" id="toast">Saved</div>
+
+  <section id="marketingSite" class="marketingSite">
+    <header class="siteHeader">
+      <a class="siteBrand" href="#top" aria-label="InsightGuard AI home">
+        <span class="siteBrandMark" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M32 5 54 13v15c0 14-8.4 25.1-22 31-13.6-5.9-22-17-22-31V13L32 5Z"/><path class="brandTick" d="m21 32 7 7 15-17"/></svg>
+        </span>
+        <span><strong>InsightGuard</strong><em>AI</em></span>
+      </a>
+      <nav class="siteNav" aria-label="Marketing navigation">
+        <a href="#platform">Platform</a>
+        <a href="#workflow">How it works</a>
+        <a href="#governance">Governance</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <div class="siteActions">
+        <button class="siteLogin" data-open-auth="login">Sign in</button>
+        <button class="siteCta" data-open-auth="signup">Start free</button>
+        <button class="mobileNavToggle" id="mobileNavToggle" aria-label="Open menu">â˜°</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="heroSection">
+        <div class="heroAmbient heroAmbientOne"></div>
+        <div class="heroAmbient heroAmbientTwo"></div>
+        <div class="heroCopy">
+          <div class="heroEyebrow"><span></span> AI-powered analytics and governance</div>
+          <h1>Fleet intelligence that turns data into <em>decisions.</em></h1>
+          <p>InsightGuard gives transport and fleet teams one realistic workspace for performance analytics, explainable AI, data quality and audit-ready governance.</p>
+          <div class="heroButtons">
+            <button class="heroPrimary" data-open-auth="signup">Start your workspace <span>â†’</span></button>
+            <button class="heroSecondary" data-launch-demo>Explore live demo <span class="playDot">â–¶</span></button>
+          </div>
+          <div class="heroTrust">
+            <span>Built for modern transport and fleet operations</span>
+            <div><b>Smarter decisions</b><b>Stronger governance</b><b>Better business outcomes</b></div>
+          </div>
+        </div>
+
+        <div class="heroProduct" aria-label="InsightGuard product preview">
+          <div class="heroOrbit heroOrbitOne"></div>
+          <div class="heroOrbit heroOrbitTwo"></div>
+          <div class="productWindow">
+            <div class="productChrome">
+              <span class="chromeDots"><i></i><i></i><i></i></span>
+              <span>app.insightguard.ai</span>
+              <span class="chromeSecure">â— Secure</span>
+            </div>
+            <div class="productBody">
+              <aside class="miniSide">
+                <div class="miniShield">â—†</div>
+                <i class="active"></i><i></i><i></i><i></i><i></i><i></i>
+              </aside>
+              <div class="miniMain">
+                <div class="miniTop"><div><small>FleetOps Transport</small><strong>Good morning, Aisha</strong></div><button>Export</button></div>
+                <div class="miniKpis">
+                  <div class="miniKpi dark"><span>Total trips</span><strong>12,843</strong><small>â†‘ 12.5%</small></div>
+                  <div class="miniKpi"><span>Revenue</span><strong>â‚¬1.24M</strong><small>â†‘ 8.7%</small></div>
+                  <div class="miniKpi"><span>Data quality</span><strong>87%</strong><small>3 issues</small></div>
+                </div>
+                <div class="miniGrid">
+                  <div class="miniChartCard">
+                    <div class="miniCardHead"><strong>Revenue trend</strong><span>Last 6 months</span></div>
+                    <svg viewBox="0 0 480 180" preserveAspectRatio="none" aria-hidden="true">
+                      <defs><linearGradient id="heroArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#20dfc1" stop-opacity=".38"/><stop offset="100%" stop-color="#20dfc1" stop-opacity="0"/></linearGradient></defs>
+                      <path class="heroGrid" d="M0 32h480M0 82h480M0 132h480M60 0v180M160 0v180M260 0v180M360 0v180M460 0v180"/>
+                      <path fill="url(#heroArea)" d="M0 142 C48 136 62 112 105 116 S165 132 204 92 S272 112 307 69 S378 83 414 47 S455 37 480 22 V180H0Z"/>
+                      <path class="heroLine" d="M0 142 C48 136 62 112 105 116 S165 132 204 92 S272 112 307 69 S378 83 414 47 S455 37 480 22"/>
+                    </svg>
+                  </div>
+                  <div class="miniAiCard">
+                    <span class="miniSpark">âœ¦</span>
+                    <small>Priority insight</small>
+                    <strong>Revenue grew while complaint rate fell.</strong>
+                    <p>Weekday route allocation drove most of the improvement.</p>
+                    <button>Review evidence â†’</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="heroFloat heroFloatOne"><span>âœ“</span><div><strong>Quality scan complete</strong><small>94% confidence</small></div></div>
+          <div class="heroFloat heroFloatTwo"><span>â†—</span><div><strong>Revenue +8.7%</strong><small>AI-detected change</small></div></div>
+        </div>
+      </section>
+
+      <section class="proofBar">
+        <div><strong>5 min</strong><span>from upload to insight</span></div>
+        <div><strong>10+ views</strong><span>one connected workspace</span></div>
+        <div><strong>100%</strong><span>explainable prototype logic</span></div>
+        <div><strong>24/7</strong><span>operational visibility</span></div>
+      </section>
+
+      <section id="platform" class="marketingSection platformSection">
+        <div class="sectionIntro centered">
+          <span class="sectionKicker">One connected control room</span>
+          <h2>Operational clarity without another reporting project.</h2>
+          <p>InsightGuard combines performance analytics, data quality, AI explanations and governance in one calm workspace.</p>
+        </div>
+        <div class="platformGrid">
+          <article class="platformCard platformCardLarge">
+            <div class="platformIcon">âŒ</div><span class="platformNumber">01</span>
+            <h3>Performance command centre</h3>
+            <p>Track the metrics that matter, compare periods and surface shifts before they become expensive problems.</p>
+            <div class="featureBars"><i style="--h:38%"></i><i style="--h:54%"></i><i style="--h:47%"></i><i style="--h:76%"></i><i style="--h:68%"></i><i style="--h:91%"></i></div>
+          </article>
+          <article class="platformCard"><div class="platformIcon">âœ¦</div><span class="platformNumber">02</span><h3>Explainable AI insights</h3><p>Plain-English explanations, supporting evidence and next-step recommendationsâ€”not mysterious black-box answers.</p></article>
+          <article class="platformCard"><div class="platformIcon">â—Ž</div><span class="platformNumber">03</span><h3>Data-quality guardrails</h3><p>Detect missing values, duplicate records and weak fields before they undermine your reports.</p></article>
+          <article class="platformCard"><div class="platformIcon">â—‡</div><span class="platformNumber">04</span><h3>Audit-ready governance</h3><p>Maintain AI-use records, control checklists, policies and ownership evidence in the same workflow.</p></article>
+        </div>
+      </section>
+
+      <section id="workflow" class="marketingSection workflowSection">
+        <div class="sectionIntro">
+          <span class="sectionKicker">Designed around real work</span>
+          <h2>From messy spreadsheet to defensible decision.</h2>
+          <p>No long implementation cycle. Start with the files your team already uses and build a repeatable reporting process around them.</p>
+        </div>
+        <div class="workflowRail">
+          <article><span>01</span><div><strong>Connect</strong><p>Upload CSV or Excel files and map the fields that matter.</p></div></article>
+          <i></i>
+          <article><span>02</span><div><strong>Validate</strong><p>Scan completeness, consistency, duplication and unusual values.</p></div></article>
+          <i></i>
+          <article><span>03</span><div><strong>Understand</strong><p>Explore KPIs and evidence-backed AI explanations.</p></div></article>
+          <i></i>
+          <article><span>04</span><div><strong>Act</strong><p>Assign actions and export a professional management report.</p></div></article>
+        </div>
+      </section>
+
+      <section id="governance" class="marketingSection governanceSection">
+        <div class="governancePanel">
+          <div class="governanceCopy">
+            <span class="sectionKicker light">Governance built into the workflow</span>
+            <h2>Trust should be visible, not assumed.</h2>
+            <p>InsightGuard is designed around clear ownership, transparent analysis and practical controlsâ€”so teams can move quickly without losing accountability.</p>
+            <ul><li>Human review for AI-supported recommendations</li><li>Data-source and retention records</li><li>AI-use register and risk classification</li><li>Board-ready governance exports</li></ul>
+            <button class="heroPrimary" data-launch-demo data-target-page="governance">Explore governance centre <span>â†’</span></button>
+          </div>
+          <div class="governanceVisual">
+            <div class="govRing ringA"><span>Data</span></div><div class="govRing ringB"><span>AI</span></div><div class="govRing ringC"><span>People</span></div>
+            <div class="govCore"><svg viewBox="0 0 64 64"><path d="M32 5 54 13v15c0 14-8.4 25.1-22 31-13.6-5.9-22-17-22-31V13L32 5Z"/><path class="brandTick" d="m21 32 7 7 15-17"/></svg></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="marketingSection pricingSection">
+        <div class="sectionIntro centered">
+          <span class="sectionKicker">Simple, transparent pricing</span>
+          <h2>Start small. Scale when InsightGuard proves its value.</h2>
+          <p>Every plan includes secure workspaces, reporting tools and guided onboarding.</p>
+        </div>
+        <div class="billingToggle"><button class="active" data-home-cycle="monthly">Monthly</button><button data-home-cycle="annual">Annual <span>Save 20%</span></button></div>
+        <div class="homePricingGrid">
+          <article class="homePriceCard"><span class="planEyebrow">Starter</span><h3 data-price-plan="Starter">â‚¬99<small>/mo</small></h3><p>For a small team testing repeatable operational reporting.</p><ul><li>1 workspace</li><li>3 uploads per month</li><li>Core dashboards</li><li>Monthly PDF report</li></ul><button data-plan="Starter">Choose Starter</button></article>
+          <article class="homePriceCard featured"><span class="mostPopular">Most popular</span><span class="planEyebrow">Growth</span><h3 data-price-plan="Growth">â‚¬249<small>/mo</small></h3><p>For growing teams that need analytics, AI and governance together.</p><ul><li>Unlimited uploads</li><li>Explainable AI insights</li><li>Governance centre</li><li>Scheduled reporting</li><li>Priority onboarding</li></ul><button data-plan="Growth">Start Growth trial</button></article>
+          <article class="homePriceCard"><span class="planEyebrow">Scale</span><h3 data-price-plan="Scale">â‚¬699<small>/mo</small></h3><p>For multi-site organisations and more advanced assurance needs.</p><ul><li>Multiple workspaces</li><li>Advanced integrations</li><li>Custom governance controls</li><li>SSO and role management</li></ul><button data-plan="Scale">Choose Scale</button></article>
+        </div>
+      </section>
+
+      <section class="closingCta">
+        <div><span class="sectionKicker light">Your next management report can be better</span><h2>Replace reporting anxiety with operational confidence.</h2><p>Launch the live product prototype, upload sample data and experience the complete InsightGuard workflow.</p></div>
+        <button class="heroPrimary" data-launch-demo>Open the live prototype <span>â†’</span></button>
+      </section>
+    </main>
+
+    <footer class="siteFooter">
+      <div><a class="siteBrand" href="#top"><span class="siteBrandMark"><svg viewBox="0 0 64 64"><path d="M32 5 54 13v15c0 14-8.4 25.1-22 31-13.6-5.9-22-17-22-31V13L32 5Z"/><path class="brandTick" d="m21 32 7 7 15-17"/></svg></span><span><strong>InsightGuard</strong><em>AI</em></span></a><p>Operational intelligence you can explain, trust and act on.</p></div>
+      <div><strong>Product</strong><a href="#platform">Platform</a><a href="#governance">Governance</a><a href="#pricing">Pricing</a></div>
+      <div><strong>Prototype</strong><button data-launch-demo>Live workspace</button><button data-open-auth="signup">Create account</button><button data-request-demo>Request a demo</button></div>
+      <div><strong>Legal</strong><button data-legal="privacy">Privacy</button><button data-legal="terms">Terms</button><button data-legal="security">Security</button></div>
+      <small>Â© 2026 InsightGuard AI. Interactive product prototype.</small>
+    </footer>
+  </section>
+
+  <section id="applicationShell" class="applicationShell isHidden" aria-label="InsightGuard AI application">
+    <div class="mobileTop">
+      <button id="mobileMenuBtn" aria-label="Open menu">â˜°</button>
+      <div class="brand"><span class="shield">â—†</span><span>InsightGuard <b>AI</b></span></div>
+    </div>
+    <div class="layout">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#dashboard" data-go="dashboard"><span class="shield">â—†</span><span>InsightGuard <b>AI</b></span></a>
+        <div class="workspaceStatus"><span class="workspaceLogo">FO</span><div><strong id="workspaceOrg">FleetOps Transport</strong><small>Growth workspace</small></div><button>âŒ„</button></div>
+        <nav class="nav" id="nav">
+          <span class="navGroup">Monitor</span>
+          <button class="navBtn active" data-page="dashboard"><span>âŒ‚</span>Dashboard</button>
+          <button class="navBtn" data-page="upload"><span>â‡§</span>Upload Data</button>
+          <button class="navBtn" data-page="insights"><span>âœ¦</span>AI Insights</button>
+          <button class="navBtn" data-page="reports"><span>â–£</span>Reports</button>
+          <button class="navBtn" data-page="quality"><span>â—‡</span>Data Quality</button>
+          <span class="navGroup">Control</span>
+          <button class="navBtn" data-page="governance"><span>â—Ž</span>AI Governance</button>
+          <button class="navBtn" data-page="customers"><span>â™§</span>Customers</button>
+          <button class="navBtn" data-page="settings"><span>âš™</span>Settings</button>
+          <button class="navBtn" data-page="billing"><span>â–¤</span>Billing</button>
+          <button class="navBtn" data-page="support"><span>?</span>Support</button>
+        </nav>
+        <div class="copilot"><div class="sparkle">âœ¦</div><strong>Your AI Copilot</strong><p>Ask questions and get instant insights.</p><button class="softBtn" data-go="insights">Open AI Assistant</button></div>
+        <button class="backToSite" id="backToSite">â† Back to website</button>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="pageCrumb" id="pageCrumb">Dashboard</div>
+          <div class="topRight">
+            <label class="appSearch"><span>âŒ•</span><input id="globalSearch" placeholder="Search workspace..." /></label>
+            <select id="companySelect" aria-label="Company"><option>FleetOps Transport Ltd</option><option>MetroFleet Ireland</option><option>ClearRoute Logistics</option></select>
+            <button class="iconBtn" id="notifyBtn" title="Notifications">â™¢<i></i></button>
+            <button class="profile" id="profileButton"><span class="avatar">AK</span><span><b id="topUser">Aisha Khan</b><small>Admin</small></span><span>âŒ„</span></button>
+          </div>
+        </header>
+        <section class="page" id="page"></section>
+      </main>
+    </div>
+  </section>
+
+  <section id="checkoutView" class="checkoutView isHidden" aria-label="Secure checkout">
+    <header class="checkoutHeader">
+      <button id="checkoutBack">â† Back</button>
+      <a class="siteBrand" href="#"><span class="siteBrandMark"><svg viewBox="0 0 64 64"><path d="M32 5 54 13v15c0 14-8.4 25.1-22 31-13.6-5.9-22-17-22-31V13L32 5Z"/><path class="brandTick" d="m21 32 7 7 15-17"/></svg></span><span><strong>InsightGuard</strong><em>AI</em></span></a>
+      <span class="secureCheckout">â— Secure sandbox checkout</span>
+    </header>
+    <main class="checkoutMain">
+      <div class="checkoutIntro"><span>Complete your subscription</span><h1>Start your InsightGuard workspace</h1><p>Use the sandbox payment details shown below. No real payment will be taken.</p></div>
+      <div class="checkoutGrid">
+        <form id="checkoutForm" class="checkoutForm" novalidate>
+          <section class="checkoutCard">
+            <div class="checkoutStep"><span>1</span><div><strong>Account information</strong><small>Your receipt and workspace access details</small></div></div>
+            <div class="checkoutFields two">
+              <label><span>Full name</span><input id="payName" autocomplete="name" required placeholder="Aisha Khan" /></label>
+              <label><span>Work email</span><input id="payEmail" type="email" autocomplete="email" required placeholder="aisha@company.com" /></label>
+              <label><span>Company</span><input id="payCompany" autocomplete="organization" required placeholder="FleetOps Transport Ltd" /></label>
+              <label><span>Country</span><select id="payCountry"><option>Ireland</option><option>India</option><option>United Kingdom</option><option>United States</option><option>Other</option></select></label>
+            </div>
+          </section>
+
+          <section class="checkoutCard">
+            <div class="checkoutStep"><span>2</span><div><strong>Payment method</strong><small>Choose a sandbox payment option</small></div></div>
+            <div class="paymentTabs"><button type="button" class="active" data-payment-method="card">Card</button><button type="button" data-payment-method="upi">UPI</button><button type="button" data-payment-method="invoice">Invoice</button></div>
+            <div id="cardPaymentFields" class="paymentPanel active">
+              <div class="sandboxHint"><span>Test card</span><button type="button" id="fillTestCard">Use 4242 4242 4242 4242</button></div>
+              <div class="checkoutFields">
+                <label class="full"><span>Card number</span><div class="cardInput"><input id="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" maxlength="19" /><b id="cardBrand">CARD</b></div></label>
+                <label><span>Expiry</span><input id="cardExpiry" inputmode="numeric" autocomplete="cc-exp" placeholder="12/30" maxlength="5" /></label>
+                <label><span>CVC</span><input id="cardCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4" /></label>
+                <label class="full"><span>Name on card</span><input id="cardHolder" autocomplete="cc-name" placeholder="Aisha Khan" /></label>
+              </div>
+            </div>
+            <div id="upiPaymentFields" class="paymentPanel">
+              <div class="checkoutFields"><label class="full"><span>UPI ID</span><input id="upiId" placeholder="name@bank" /></label></div>
+              <div class="sandboxHint"><span>Sandbox</span><button type="button" id="fillTestUpi">Use demo@upi</button></div>
+            </div>
+            <div id="invoicePaymentFields" class="paymentPanel">
+              <div class="invoiceOption"><span>â–¤</span><div><strong>Pay by invoice</strong><p>A pro-forma invoice will be generated. Access activates after payment confirmation.</p></div></div>
+              <div class="checkoutFields"><label class="full"><span>Purchase order reference (optional)</span><input id="poReference" placeholder="PO-2026-001" /></label></div>
+            </div>
+          </section>
+
+          <section class="checkoutCard">
+            <div class="checkoutStep"><span>3</span><div><strong>Billing address</strong><small>Used for invoices and tax records</small></div></div>
+            <div class="checkoutFields two"><label class="full"><span>Address</span><input id="billAddress" required placeholder="12 Business Park" /></label><label><span>City</span><input id="billCity" required placeholder="Galway" /></label><label><span>Postal code</span><input id="billPostcode" required placeholder="H91 XXXX" /></label></div>
+          </section>
+
+          <label class="checkoutConsent"><input id="termsConsent" type="checkbox" required /><span>I agree to the prototype terms and understand that this is a sandbox transaction with no real charge.</span></label>
+          <button class="checkoutSubmit" id="checkoutSubmit" type="submit"><span id="checkoutSubmitText">Start 14-day trial</span><b>â†’</b></button>
+          <p class="checkoutFinePrint">Card details are validated in your browser and are never stored. Production payments should use a hosted provider such as Stripe or Razorpay.</p>
+        </form>
+
+        <aside class="orderSummary">
+          <div class="summaryCard">
+            <span class="summaryKicker">Order summary</span>
+            <div class="summaryPlan"><div><span id="summaryPlanName">Growth</span><small id="summaryPlanDescription">For growing operational teams</small></div><button id="changePlan" type="button">Change</button></div>
+            <div class="cycleSelector"><button type="button" class="active" data-checkout-cycle="monthly">Monthly</button><button type="button" data-checkout-cycle="annual">Annual Â· save 20%</button></div>
+            <div class="summaryLine"><span>Subscription</span><strong id="summaryBasePrice">â‚¬249.00</strong></div>
+            <div class="summaryLine discount isHidden" id="discountLine"><span>Annual saving</span><strong id="summaryDiscount">âˆ’â‚¬0.00</strong></div>
+            <div class="couponRow"><input id="couponInput" placeholder="Coupon code" /><button id="applyCoupon" type="button">Apply</button></div>
+            <div class="couponMessage" id="couponMessage"></div>
+            <div class="summaryDivider"></div>
+            <div class="summaryTotal"><span>Due today<small>14-day free trial</small></span><strong>â‚¬0.00</strong></div>
+            <p>After the trial, <b id="renewalText">â‚¬249.00/month</b>. Cancel anytime before renewal.</p>
+          </div>
+          <div class="summaryTrust"><div><span>â—‡</span><p><strong>Secure by design</strong>Sandbox data stays in this browser.</p></div><div><span>â†º</span><p><strong>Cancel anytime</strong>No long-term contract in the prototype.</p></div><div><span>âœ“</span><p><strong>Human support</strong>Guided onboarding included.</p></div></div>
+        </aside>
+      </div>
+    </main>
+  </section>
+
+  <section id="paymentSuccess" class="paymentSuccess isHidden" aria-live="polite">
+    <div class="successCard"><span class="successIcon">âœ“</span><span class="successKicker">Sandbox payment successful</span><h1>Your InsightGuard workspace is ready.</h1><p>No real payment was taken. A prototype subscription and receipt have been saved in this browser.</p><div class="successDetails"><div><span>Plan</span><strong id="successPlan">Growth</strong></div><div><span>Transaction</span><strong id="successTransaction">IG-DEMO-000000</strong></div><div><span>Next billing date</span><strong id="successRenewal">â€”</strong></div></div><div class="successActions"><button id="downloadReceipt">Download receipt</button><button class="primary" id="enterWorkspace">Enter workspace â†’</button></div></div>
+  </section>
+
+  <div id="authModal" class="modalOverlay isHidden" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="authModal">
+      <button class="modalClose" data-close-modal="authModal">Ã—</button>
+      <span class="modalLogo">â—†</span><span class="modalKicker" id="authKicker">Create your prototype workspace</span><h2 id="authTitle">Start with InsightGuard AI</h2><p id="authSubtitle">No credit card required. Your demo data is stored only in this browser.</p>
+      <form id="authForm"><label><span>Full name</span><input id="authName" required placeholder="Aisha Khan" /></label><label><span>Work email</span><input id="authEmail" type="email" required placeholder="aisha@company.com" /></label><label id="authOrgLabel"><span>Company name</span><input id="authOrg" required placeholder="FleetOps Transport Ltd" /></label><button type="submit" id="authSubmit">Create demo workspace â†’</button></form>
+      <small>By continuing, you agree to the prototype terms. No real account is created.</small>
+    </div>
+  </div>
+
+  <div id="requestModal" class="modalOverlay isHidden" role="dialog" aria-modal="true" aria-labelledby="requestTitle">
+    <div class="authModal">
+      <button class="modalClose" data-close-modal="requestModal">Ã—</button><span class="modalLogo">âœ¦</span><span class="modalKicker">Product conversation</span><h2 id="requestTitle">Request an InsightGuard demo</h2><p>Tell us what kind of operational data you want to improve.</p>
+      <form id="requestForm"><label><span>Name</span><input id="requestName" required /></label><label><span>Email</span><input id="requestEmail" type="email" required /></label><label><span>Use case</span><select id="requestUseCase"><option>Transport and fleet analytics</option><option>Customer service analytics</option><option>General SME reporting</option><option>AI governance</option></select></label><label><span>Message</span><textarea id="requestMessage" rows="4" placeholder="Tell us about your reporting challenge..."></textarea></label><button type="submit">Send demo request â†’</button></form>
+    </div>
+  </div>
+
+  <div id="genericModal" class="modalOverlay isHidden" role="dialog" aria-modal="true">
+    <div class="genericModal"><button class="modalClose" data-close-modal="genericModal">Ã—</button><div id="genericModalContent"></div></div>
+  </div>
+</body>
+</html>
+

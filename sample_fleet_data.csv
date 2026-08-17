@@ -1,0 +1,16 @@
+date,day,hour,route,driver,driver_id,vehicle,customer_email,trips,revenue,cancellations,complaints
+2026-05-01,Fri,7,Downtown to Airport,Ravi Kumar,D101,TX204,amy@example.com,1008,100300,10,18
+2026-05-02,Sat,8,CBD to Industrial Area,Jason Lee,D102,TX208,mark@example.com,974,92500,12,18
+2026-05-03,Sun,10,Airport to Suburbs,Fatima Ali,D103,TX211,sarah@example.com,763,79800,14,14
+2026-05-04,Mon,11,North Zone to CBD,Michael D,D104,TX218,john@example.com,675,65900,9,12
+2026-05-05,Tue,9,Port to Warehouse District,Priya Nair,D105,TX220,niamh@example.com,646,59200,8,12
+2026-05-06,Wed,17,Downtown to Airport,Ravi Kumar,D101,TX204,emma@example.com,1130,111200,11,20
+2026-05-07,Thu,18,CBD to Industrial Area,Jason Lee,D102,TX208,paul@example.com,1064,103300,8,19
+2026-05-08,Fri,19,Airport to Suburbs,Fatima Ali,D103,TX211,aoife@example.com,949,95500,13,17
+2026-05-09,Sat,8,North Zone to CBD,Michael D,D104,TX218,david@example.com,954,90000,11,17
+2026-05-10,Sun,12,Port to Warehouse District,Priya Nair,D105,TX220,grace@example.com,783,71900,17,14
+2026-05-11,Mon,15,Downtown to Airport,Ravi Kumar,D101,TX204,sean@example.com,697,65300,10,13
+2026-05-12,Tue,7,CBD to Industrial Area,Jason Lee,D102,TX208,laura@example.com,983,91900,6,18
+2026-05-13,Wed,8,Airport to Suburbs,Fatima Ali,D103,TX211,doyle@example.com,1052,98500,7,19
+2026-05-14,Thu,9,Downtown to Airport,Ravi Kumar,D101,TX204,fleet@example.com,1165,114700,9,20
+
