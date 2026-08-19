@@ -1,93 +1,66 @@
-# InsightGuard AI â€” working product MVP
+# InsightGuard AI — Portfolio Prototype
 
-InsightGuard AI is a responsive, Netlify-ready SaaS prototype for transport and fleet businesses. It combines operational analytics, explainable AI-style insights, data-quality controls, management reporting and AI governance in one clean workspace.
+InsightGuard AI is a browser-only portfolio prototype for exploring operational analytics, data-quality checks, AI-style explanations, reporting, and governance workflows for transport and fleet teams.
 
-The interface follows a realistic modern product style: white surfaces, cobalt-blue accents, compact navigation, soft shadows, readable charts and business-ready data views.\n\n![InsightGuard dashboard](docs/screenshots/dashboard.png)
+It is a presentation artifact, not a live SaaS product. Its organisations, people, records, prices, payments, receipts, and support interactions are fictional demonstration content.
 
-## Start locally
+## Prototype boundaries
 
-The prototype has no build step. You can open `index.html` directly, but a local server gives the most reliable experience.
+- No real account, sign-in, identity verification, role permission, subscription, payment, invoice, support service, or email service exists.
+- No payment provider or payment-processing code is connected. The checkout is a local simulation; do not enter a real card number or financial information.
+- CSV and Excel files are parsed locally in the browser. Uploads are not sent to a server, but should still contain only synthetic or non-sensitive data.
+- Demo profile, workspace, upload-history, and checkout-simulation details may be stored in this browser's local storage. Clear this site's browser data to remove them.
+- The dashboard's AI-style insights are deterministic frontend demonstrations, not output from a live AI model or API.
+
+Read [PROTOTYPE_BOUNDARIES.md](PROTOTYPE_BOUNDARIES.md) before demonstrating, deploying, or extending the project.
+
+## Run locally
+
+Open `index.html` for a quick preview, or serve the folder locally for the most reliable experience:
 
 ```bash
 python -m http.server 8080
 ```
 
-Then open `http://localhost:8080`.
+Then visit `http://localhost:8080`.
 
-## Deploy to Netlify
+## Deploy as a portfolio demo
 
-1. Extract the final ZIP.
-2. Open [Netlify Drop](https://app.netlify.com/drop).
-3. Drag the complete `insightguard-mvp` folder onto the page.
-4. Open the generated HTTPS URL.
-5. Test the homepage, live workspace, upload flow and sandbox checkout.
+The project is static and Netlify-ready. Deploy the complete `insightguard-mvp` folder with no build command.
 
-No build command or publish-directory change is required. `netlify.toml`, `_redirects` and `_headers` are already included.
+`_headers` applies a restrictive Content Security Policy. It deliberately permits only the site itself, Google Fonts, and the pinned SheetJS CDN required for local Excel parsing. Review the policy before adding any new external resource.
 
-## What works
+## What the demo shows
 
-- Responsive public homepage with product, workflow, governance and pricing sections
-- Demo signup and sign-in modals
-- Realistic fleet dashboard with KPIs, charts, heatmap, routes and drivers
-- CSV upload and in-browser parsing
-- Excel upload through SheetJS
-- One-click sample dataset
-- AI-style operational Q&A and recommendations
-- Data-quality scoring and validation views
-- Printable management report and CSV export
-- AI governance checklist and policy-pack download
-- Customer search and creation
-- Editable organisation settings
-- Billing plans, invoice download and usage summary
-- Complete sandbox checkout with card, UPI and invoice modes
-- Coupon codes: `FOUNDING20` and `PILOT10`
-- Downloadable sandbox receipt
-- Browser local-storage persistence
-- Responsive desktop, tablet and mobile layouts
+- Responsive marketing site and interactive workspace
+- Local CSV and Excel parsing, plus a fictional sample dataset
+- Dashboard calculations, data-quality indicators, reports, and CSV exports
+- AI-style operational recommendations and governance checklist flows
+- Local demo-profile, customer, and support-ticket interactions
+- Prototype checkout simulation using the supplied test values only
+- Downloadable, clearly labelled prototype receipt
 
-## Recommended presentation flow
+## Test inputs for the checkout simulation
 
-1. Start on the homepage and explain the four connected capabilities.
-2. Select **Explore live demo**.
-3. Show the dashboard KPIs, revenue trend and AI summary.
-4. Open **Upload Data** and select **Load sample data**.
-5. Open **AI Insights** and ask: `What is driving revenue performance?`
-6. Open **AI Governance** and show the checklist and policy templates.
-7. Open **Billing**, choose a plan and demonstrate sandbox checkout.
+- Test card: `4242 4242 4242 4242`
+- Test expiry: `12/30`
+- Test CVC: `123`
+- Test UPI: `demo@upi`
 
-See `PRESENTATION_GUIDE.md` for a rehearsable five-minute script.
-
-## Sandbox payment details
-
-- Card number: `4242 4242 4242 4242`
-- Expiry: `12/30`
-- CVC: `123`
-- UPI: `demo@upi`
-
-No real payment is processed and card details are not stored.
+These inputs are only used to demonstrate browser-side validation. No money is charged, no payment is submitted, and card values are cleared after the simulation completes.
 
 ## Main files
 
-- `index.html` â€” homepage, app shell, checkout and modal markup
-- `styles.css` â€” base application layout and components
-- `premium.css` â€” marketing, checkout and advanced component styles
-- `reference-theme.css` â€” final clean blue-and-white visual theme
-- `app.js` â€” dashboard data, navigation, reports and interactions
-- `enhancements.js` â€” homepage, Excel handling, modals and checkout
-- `sample_fleet_data.csv` â€” presentation-ready test dataset
-- `payment-config.js` â€” hook for a future hosted payment provider
+- `index.html` — marketing site, workspace shell, and simulation markup
+- `styles.css` and `premium.css` — responsive visual system
+- `app.js` — dashboard state, calculations, reports, and local exports
+- `enhancements.js` — local profile, upload, and prototype-checkout interactions
+- `payment-config.js` — immutable prototype-mode declaration; it cannot enable real payments
+- `_headers` — Netlify security headers
+- `sample_fleet_data.csv` — fictional sample data
 
-## Production boundaries
+## Production work deliberately out of scope
 
-This is a presentation-quality frontend MVP. A production release still requires:
+A real product would require a backend, secure authentication and authorisation, tenant isolation, server-side file validation and malware scanning, database and storage controls, a monitored AI service, hosted payment checkout with server-side webhook verification, privacy/legal work, observability, backups, and formal security review.
 
-- Secure authentication and role permissions
-- Multi-tenant database and cloud file storage
-- Server-side file validation and malware scanning
-- A real AI service with monitoring and usage controls
-- Secure payment provider checkout and verified webhooks
-- Transactional email, logging, backups and security review
-- Final privacy, terms and data-retention policies
-
-Never place private API keys or payment secrets in frontend files.
-
+Never add private API keys, credentials, real customer data, or payment secrets to this repository.

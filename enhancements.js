@@ -57,16 +57,16 @@
   }
 
   function readAppState(){
-    try{return JSON.parse(storageGet('insightguard_reference_state_v2') || '{}');}catch(e){return {};}
+    try{return JSON.parse(storageGet('insightguard_fixed_state') || '{}');}catch(e){return {};}
   }
-  function writeAppState(state){ storageSet('insightguard_reference_state_v2',JSON.stringify(state)); }
+  function writeAppState(state){ storageSet('insightguard_fixed_state',JSON.stringify(state)); }
 
   function openAuth(mode){
     var login = mode === 'login';
-    $('#authKicker').textContent = login ? 'Welcome back' : 'Create your prototype workspace';
-    $('#authTitle').textContent = login ? 'Sign in to InsightGuard AI' : 'Start with InsightGuard AI';
-    $('#authSubtitle').textContent = login ? 'Use any valid email to enter the interactive prototype.' : 'No credit card required. Your demo data is stored only in this browser.';
-    $('#authSubmit').textContent = login ? 'Enter workspace â†’' : 'Create demo workspace â†’';
+    $('#authKicker').textContent = login ? 'Open the local demo' : 'Create a local demo profile';
+    $('#authTitle').textContent = login ? 'Enter the InsightGuard prototype' : 'Personalise this prototype';
+    $('#authSubtitle').textContent = login ? 'This is not a sign-in. Use fictional details to open the interactive demo.' : 'Use fictional details only. They are stored locally in this browser for the demo.';
+    $('#authSubmit').textContent = login ? 'Open demo workspace →' : 'Save demo profile →';
     $('#authOrgLabel').style.display = login ? 'none' : 'flex';
     $('#authOrg').required = !login;
     $('#authForm').dataset.mode = mode;
@@ -78,7 +78,7 @@
     var name = $('#authName').value.trim();
     var email = $('#authEmail').value.trim();
     var org = $('#authOrg').value.trim();
-    if(!name || !/^\S+@\S+\.\S+$/.test(email)){ showToast('Enter your name and a valid email.'); return; }
+    if(!name || !/^\S+@\S+\.\S+$/.test(email)){ showToast('Enter a demo name and a valid demo email.'); return; }
     var state = readAppState();
     state.user = name;
     state.email = email;
@@ -106,9 +106,9 @@
     $('#summaryPlanDescription').textContent = planDescriptions[checkoutState.plan];
     $('#summaryBasePrice').textContent = formatCurrency(base);
     $('#discountLine').classList.toggle('isHidden',discount<=0);
-    $('#summaryDiscount').textContent = 'âˆ’'+formatCurrency(discount);
+    $('#summaryDiscount').textContent = '−'+formatCurrency(discount);
     $('#renewalText').textContent = formatCurrency(final) + (checkoutState.cycle==='annual'?'/year':'/month');
-    $('#checkoutSubmitText').textContent = checkoutState.paymentMethod === 'invoice' ? 'Create pro-forma invoice' : 'Start 14-day trial';
+    $('#checkoutSubmitText').textContent = checkoutState.paymentMethod === 'invoice' ? 'Create demo receipt' : 'Complete prototype checkout';
     $$('.cycleSelector button').forEach(function(b){b.classList.toggle('active',b.dataset.checkoutCycle===checkoutState.cycle);});
   }
 
@@ -132,16 +132,8 @@
     updateCheckoutSummary();
   }
 
-  function luhn(number){
-    var digits=number.replace(/\D/g,'').split('').reverse().map(Number),sum=0;
-    digits.forEach(function(d,i){if(i%2){d*=2;if(d>9)d-=9;}sum+=d;});
-    return digits.length>=13 && sum%10===0;
-  }
-  function validExpiry(value){
-    var match=/^(0[1-9]|1[0-2])\/(\d{2})$/.exec(value); if(!match)return false;
-    var month=Number(match[1]),year=2000+Number(match[2]);
-    var expiry=new Date(year,month,0,23,59,59); return expiry>=new Date();
-  }
+  function isTestCard(number){ return number.replace(/\D/g,'') === '4242424242424242'; }
+  function isTestExpiry(value){ return value === '12/30'; }
   function markInvalid(el,invalid){ if(el) el.classList.toggle('invalid',!!invalid); return !invalid; }
 
   function validateCheckout(){
@@ -149,12 +141,12 @@
     ['payName','payCompany','billAddress','billCity','billPostcode'].forEach(function(id){var el=$('#'+id);ok=markInvalid(el,!el.value.trim())&&ok;});
     var email=$('#payEmail'); ok=markInvalid(email,!/^\S+@\S+\.\S+$/.test(email.value.trim()))&&ok;
     if(checkoutState.paymentMethod==='card'){
-      ok=markInvalid($('#cardNumber'),!luhn($('#cardNumber').value))&&ok;
-      ok=markInvalid($('#cardExpiry'),!validExpiry($('#cardExpiry').value))&&ok;
-      ok=markInvalid($('#cardCvc'),!/^\d{3,4}$/.test($('#cardCvc').value))&&ok;
+      ok=markInvalid($('#cardNumber'),!isTestCard($('#cardNumber').value))&&ok;
+      ok=markInvalid($('#cardExpiry'),!isTestExpiry($('#cardExpiry').value))&&ok;
+      ok=markInvalid($('#cardCvc'),$('#cardCvc').value !== '123')&&ok;
       ok=markInvalid($('#cardHolder'),!$('#cardHolder').value.trim())&&ok;
     } else if(checkoutState.paymentMethod==='upi'){
-      ok=markInvalid($('#upiId'),!/^[\w.-]{2,}@[\w.-]{2,}$/.test($('#upiId').value.trim()))&&ok;
+      ok=markInvalid($('#upiId'),$('#upiId').value.trim() !== 'demo@upi')&&ok;
     }
     if(!$('#termsConsent').checked){showToast('Accept the prototype terms to continue.');ok=false;}
     return ok;
@@ -162,25 +154,25 @@
 
   function processCheckout(event){
     event.preventDefault();
-    if(!validateCheckout()){showToast('Check the highlighted payment details.');return;}
-    var cfg=window.INSIGHTGUARD_PAYMENT_CONFIG||{};
-    if(cfg.mode==='live' && cfg.hostedCheckoutUrl){ location.href=cfg.hostedCheckoutUrl; return; }
-    var button=$('#checkoutSubmit');button.disabled=true;$('#checkoutSubmitText').textContent='Processing securelyâ€¦';
+    if(!validateCheckout()){showToast('Use the supplied test values and check the highlighted fields.');return;}
+    var button=$('#checkoutSubmit');button.disabled=true;$('#checkoutSubmitText').textContent='Preparing demo result…';
     setTimeout(function(){
       var base=cycleAmount(checkoutState.plan,checkoutState.cycle), final=base-(base*checkoutState.discount);
-      var now=new Date(), renewal=new Date(now); renewal.setDate(renewal.getDate()+14);
+      var now=new Date(), illustrativeDate=new Date(now); illustrativeDate.setDate(illustrativeDate.getDate()+14);
       var transaction='IG-DEMO-'+Date.now().toString().slice(-8);
       lastTransaction={
         id:transaction,plan:checkoutState.plan,cycle:checkoutState.cycle,amount:final,currency:'EUR',
         customer:$('#payName').value.trim(),email:$('#payEmail').value.trim(),company:$('#payCompany').value.trim(),
-        method:checkoutState.paymentMethod,status:checkoutState.paymentMethod==='invoice'?'Invoice created':'Sandbox approved',
-        created:now.toISOString(),renewal:renewal.toISOString()
+        method:checkoutState.paymentMethod,status:checkoutState.paymentMethod==='invoice'?'Demo invoice generated':'Prototype complete',
+        created:now.toISOString(),illustrativeDate:illustrativeDate.toISOString()
       };
-      storageSet('ig_subscription',JSON.stringify(lastTransaction));
+      storageSet('ig_prototype_checkout',JSON.stringify(lastTransaction));
       var state=readAppState();state.user=lastTransaction.customer;state.email=lastTransaction.email;state.org=lastTransaction.company;writeAppState(state);
-      $('#successPlan').textContent=lastTransaction.plan+' Â· '+(lastTransaction.cycle==='annual'?'Annual':'Monthly');
+      $('#successPlan').textContent=lastTransaction.plan+' · '+(lastTransaction.cycle==='annual'?'Annual':'Monthly');
       $('#successTransaction').textContent=lastTransaction.id;
-      $('#successRenewal').textContent=renewal.toLocaleDateString('en-IE',{day:'numeric',month:'short',year:'numeric'});
+      $('#successRenewal').textContent=illustrativeDate.toLocaleDateString('en-IE',{day:'numeric',month:'short',year:'numeric'});
+      ['cardNumber','cardExpiry','cardCvc','cardHolder','upiId'].forEach(function(id){ var field=$('#'+id); if(field)field.value=''; });
+      $('#cardBrand').textContent='TEST';
       button.disabled=false;updateCheckoutSummary();showOnly('paymentSuccess');
     },1250);
   }
@@ -192,16 +184,16 @@
 
   function downloadReceipt(){
     var tx=lastTransaction;
-    if(!tx){try{tx=JSON.parse(storageGet('ig_subscription'));}catch(e){}}
-    if(!tx){showToast('No prototype transaction found.');return;}
+    if(!tx){try{tx=JSON.parse(storageGet('ig_prototype_checkout'));}catch(e){}}
+    if(!tx){showToast('No prototype checkout result found.');return;}
     var text=[
-      'INSIGHTGUARD AI â€” SANDBOX RECEIPT','',
-      'Transaction: '+tx.id,'Status: '+tx.status,'Date: '+new Date(tx.created).toLocaleString('en-IE'),'',
+      'INSIGHTGUARD AI — PROTOTYPE RECEIPT (NOT A PAYMENT RECORD)','',
+      'Demo reference: '+tx.id,'Status: '+tx.status,'Date: '+new Date(tx.created).toLocaleString('en-IE'),'',
       'Customer: '+tx.customer,'Company: '+tx.company,'Email: '+tx.email,'',
-      'Plan: '+tx.plan,'Billing cycle: '+tx.cycle,'Renewal amount: '+formatCurrency(tx.amount),'Trial charge today: â‚¬0.00','',
-      'This is a prototype sandbox receipt. No real payment was taken.'
+      'Scenario: '+tx.plan,'Illustrative cycle: '+tx.cycle,'Illustrative value: '+formatCurrency(tx.amount),'Amount charged: €0.00','',
+      'This is a local prototype receipt. No payment, subscription, invoice, or account was created.'
     ].join('\n');
-    downloadText(text,'InsightGuard_'+tx.id+'_Receipt.txt');showToast('Receipt downloaded.');
+    downloadText(text,'InsightGuard_'+tx.id+'_Prototype_Receipt.txt');showToast('Prototype receipt downloaded.');
   }
 
   function applyCoupon(){
@@ -213,12 +205,12 @@
   }
 
   function showPlanChooser(){
-    openGeneric('<span class="modalKicker">Change subscription</span><h2>Choose an InsightGuard plan</h2><p>You can switch plans before completing the sandbox checkout.</p><div class="modalForm">'+Object.keys(planPrices).map(function(p){return '<button class="planChoice" data-modal-plan="'+p+'"><b>'+p+'</b><span>'+formatCurrency(planPrices[p])+'/month</span></button>';}).join('')+'</div>');
+    openGeneric('<span class="modalKicker">Choose a demo scenario</span><h2>Select an illustrative plan</h2><p>You can switch scenarios before completing the local checkout simulation.</p><div class="modalForm">'+Object.keys(planPrices).map(function(p){return '<button class="planChoice" data-modal-plan="'+p+'"><b>'+p+'</b><span>'+formatCurrency(planPrices[p])+'/month</span></button>';}).join('')+'</div>');
     $$('[data-modal-plan]').forEach(function(btn){btn.onclick=function(){checkoutState.plan=btn.dataset.modalPlan;closeModal('genericModal');updateCheckoutSummary();};});
   }
 
   function showNotifications(){
-    openGeneric('<span class="modalKicker">Workspace activity</span><h2>Notifications</h2><div class="notificationList"><div><span>âœ“</span><p><b>Quality scan completed</b>Two issues need review in the latest dataset.</p></div><div><span>âœ¦</span><p><b>New AI insight available</b>Weekday route allocation is driving revenue growth.</p></div><div><span>â–¤</span><p><b>Monthly report ready</b>Your management report can be exported now.</p></div></div>');
+    openGeneric('<span class="modalKicker">Workspace activity</span><h2>Notifications</h2><div class="notificationList"><div><span>✓</span><p><b>Quality scan completed</b>Two issues need review in the latest dataset.</p></div><div><span>✦</span><p><b>New AI insight available</b>Weekday route allocation is driving revenue growth.</p></div><div><span>▤</span><p><b>Monthly report ready</b>Your management report can be exported now.</p></div></div>');
   }
 
   function addCustomerModal(){
@@ -243,7 +235,7 @@
     var requests=[];try{requests=JSON.parse(storageGet('ig_demo_requests')||'[]');}catch(err){}
     requests.unshift({name:$('#requestName').value.trim(),email:$('#requestEmail').value.trim(),useCase:$('#requestUseCase').value,message:$('#requestMessage').value.trim(),created:new Date().toISOString()});
     storageSet('ig_demo_requests',JSON.stringify(requests));closeModal('requestModal');
-    openGeneric('<span class="successIcon" style="margin:0 0 15px">âœ“</span><h2>Demo request recorded</h2><p>For this prototype, the request has been saved locally in your browser. A production version would send it to the InsightGuard sales inbox and CRM.</p><div class="modalActions"><button class="primary" data-close-modal="genericModal">Done</button></div>');
+    openGeneric('<span class="successIcon" style="margin:0 0 15px">✓</span><h2>Demo request recorded</h2><p>For this prototype, the request has been saved locally in your browser. A production version would send it to the InsightGuard sales inbox and CRM.</p><div class="modalActions"><button class="primary" data-close-modal="genericModal">Done</button></div>');
   }
 
   function showLegal(type){
@@ -281,7 +273,7 @@
         driver:lower.driver||lower.staff||lower.agent||lower.owner||('Team member '+(i+1)),driver_id:lower.driver_id||lower.staff_id||'',
         vehicle:lower.vehicle||lower.vehicle_id||'',customer_email:lower.customer_email||lower.email||'',
         trips:+(lower.trips||lower.bookings||lower.jobs||lower.calls||lower.presented||1),
-        revenue:+String(lower.revenue||lower.amount||lower.sales||lower.answered||0).replace(/[â‚¬$Â£,\s]/g,''),
+        revenue:+String(lower.revenue||lower.amount||lower.sales||lower.answered||0).replace(/[€$£,\s]/g,''),
         cancellations:+(lower.cancellations||lower.cancelled||lower.abandoned||0),complaints:+(lower.complaints||lower.issues||lower.errors||0)
       };
     });
@@ -306,12 +298,15 @@
   function enhanceBillingPage(){
     var page=$('#page');if(!page||!document.querySelector('.navBtn[data-page="billing"].active'))return;
     var existing=$('#activeSubscriptionBanner');if(existing)return;
-    var tx;try{tx=JSON.parse(storageGet('ig_subscription'));}catch(e){}
+    var tx;try{tx=JSON.parse(storageGet('ig_prototype_checkout'));}catch(e){}
     if(!tx)return;
     var banner=document.createElement('div');banner.id='activeSubscriptionBanner';banner.className='subscriptionBanner';
-    banner.innerHTML='<div><span>âœ“</span><p><b>'+tx.plan+' prototype subscription active</b>'+tx.status+' Â· Renewal '+new Date(tx.renewal).toLocaleDateString('en-IE')+'</p></div><button id="billingReceipt">Download receipt</button>';
+    var content=document.createElement('div'),mark=document.createElement('span'),copy=document.createElement('p'),title=document.createElement('b'),details=document.createElement('span'),receipt=document.createElement('button');
+    mark.textContent='✓';title.textContent=String(tx.plan||'Selected')+' prototype scenario complete';details.textContent=String(tx.status||'Local result')+' · Illustrative date '+new Date(tx.illustrativeDate||tx.created).toLocaleDateString('en-IE');
+    copy.appendChild(title);copy.appendChild(document.createTextNode(' '));copy.appendChild(details);content.appendChild(mark);content.appendChild(copy);
+    receipt.id='billingReceipt';receipt.textContent='Download demo receipt';banner.appendChild(content);banner.appendChild(receipt);
     var firstGrid=page.querySelector('.threeCol');if(firstGrid)firstGrid.parentNode.insertBefore(banner,firstGrid);
-    var receipt=$('#billingReceipt');if(receipt)receipt.onclick=downloadReceipt;
+    receipt.onclick=downloadReceipt;
   }
 
   function setupCaptureInterceptors(){
@@ -382,6 +377,6 @@
     setTimeout(enhanceBillingPage,100);
   }
 
+  window.downloadPrototypeReceipt=downloadReceipt;
   document.addEventListener('DOMContentLoaded',init);
 })();
-
